@@ -24,10 +24,11 @@
 : filetype plugin indent on
 
 " 缩进
-: set autoindent
+: set smartindent
 : set tabstop=4
 : set softtabstop=4
 : set shiftwidth=4
+: set noexpandtab
 
 " 自动折行
 : set wrap
