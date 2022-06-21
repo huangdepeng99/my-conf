@@ -47,13 +47,13 @@
 : set statusline+=%5*\ [%{&fileencoding}]%*
 : set statusline+=%6*\ \ \ Lines:%L\ Ln:%l,Col:%c%*
 : set statusline+=%7*\ \ \ %P\ %*
-: hi User1 ctermfg=White ctermbg=Black
-: hi User2 ctermfg=White ctermbg=Black
-: hi User3 ctermfg=White ctermbg=Black
-: hi User4 ctermfg=White ctermbg=Black
-: hi User5 ctermfg=White ctermbg=Black
-: hi User6 ctermfg=White ctermbg=Black
-: hi User7 ctermfg=White ctermbg=Black
+: hi User1 ctermfg=White ctermbg=DarkGrey
+: hi User2 ctermfg=White ctermbg=DarkGrey
+: hi User3 ctermfg=White ctermbg=DarkGrey
+: hi User4 ctermfg=White ctermbg=DarkGrey
+: hi User5 ctermfg=White ctermbg=DarkGrey
+: hi User6 ctermfg=White ctermbg=DarkGrey
+: hi User7 ctermfg=White ctermbg=DarkGrey
 
 " 显示光标的当前位置
 : set ruler
