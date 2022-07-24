@@ -76,7 +76,7 @@ set wildmenu
 
 " 剪切板
 if has('clipboard')
-  set clipboard+=unnamedplus
+  set clipboard=unnamedplus
 endif
 
 
