@@ -23,9 +23,6 @@ set mouse=a
 " 文件类型检查
 filetype plugin indent on
 
-" 编码
-set encoding=utf-8
-
 " 缩进
 set smartindent
 set tabstop=4
@@ -39,16 +36,22 @@ set wrap
 " 垂直滚动时，光标距离顶部/底部的位置（单位：行）
 set scrolloff=5
 
+" 编码
+set encoding=utf-8
+
 " 是否显示状态栏（0表示不显示，1表示只在多窗口时显示，2表示总是显示）
 set laststatus=2
 
 " 状态栏显示的信息
-set statusline=\ %<%F
+set statusline=%<
+set statusline+=\ %F
 set statusline+=\ [%n%M%R%H%W]
-set statusline+=%=\ %y
+set statusline+=%=
+set statusline+=%(\ %y%)
 set statusline+=\ [%{&ff}]
 set statusline+=\ [%{&fenc?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]
-set statusline+=\ \ \ Lines:%L\ Ln:%l,Col:%c
+set statusline+=\ \ \ Length:%{wordcount().bytes}\ Lines:%L
+set statusline+=\ \ \ Ln:%l,Col:%c\ Pos:%o
 set statusline+=\ \ \ %P
 set statusline+=\ %{\"\"}
 
