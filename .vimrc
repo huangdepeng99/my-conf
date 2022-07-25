@@ -49,7 +49,7 @@ set statusline+=\ [%n%M%R%H%W]
 set statusline+=%=
 set statusline+=%(\ %y%)
 set statusline+=\ [%{&ff}]
-set statusline+=\ [%{&fenc?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]
+set statusline+=\ [%{!empty(&fenc)?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]
 if exists('*wordcount')
   set statusline+=\ \ \ Length:%{wordcount().bytes}\ Lines:%L
 else
