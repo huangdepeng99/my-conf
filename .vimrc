@@ -23,6 +23,9 @@ set mouse=a
 " 文件类型检查
 filetype plugin indent on
 
+" 编码
+set encoding=utf-8
+
 " 缩进
 set smartindent
 set tabstop=4
@@ -40,20 +43,14 @@ set scrolloff=5
 set laststatus=2
 
 " 状态栏显示的信息
-set statusline=%1*\ %<%F%*
-set statusline+=%2*\ [%n%M%R%H%W]%*
-set statusline+=%3*%=\ %y%*
-set statusline+=%4*\ [%{&fileformat}]%*
-set statusline+=%5*\ [%{&fileencoding}]%*
-set statusline+=%6*\ \ \ Lines:%L\ Ln:%l,Col:%c%*
-set statusline+=%7*\ \ \ %P\ %*
-hi User1 ctermfg=White ctermbg=DarkGrey
-hi User2 ctermfg=White ctermbg=DarkGrey
-hi User3 ctermfg=White ctermbg=DarkGrey
-hi User4 ctermfg=White ctermbg=DarkGrey
-hi User5 ctermfg=White ctermbg=DarkGrey
-hi User6 ctermfg=White ctermbg=DarkGrey
-hi User7 ctermfg=White ctermbg=DarkGrey
+set statusline=\ %<%F
+set statusline+=\ [%n%M%R%H%W]
+set statusline+=%=\ %y
+set statusline+=\ [%{&ff}]
+set statusline+=\ [%{&fenc?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]
+set statusline+=\ \ \ Lines:%L\ Ln:%l,Col:%c
+set statusline+=\ \ \ %P
+set statusline+=\ %{\"\"}
 
 " 显示光标的当前位置
 set ruler
@@ -79,6 +76,9 @@ if has('clipboard')
   set clipboard=unnamedplus
 endif
 
+" 配色方案
+colorscheme ron
+
 
 
 """""""
@@ -87,7 +87,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" NERDTree
+" The NERD tree
 Plug 'scrooloose/nerdtree'
 
 " Tagbar
