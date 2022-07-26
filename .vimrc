@@ -43,24 +43,30 @@ set encoding=utf-8
 set laststatus=2
 
 " 状态栏显示的信息
-set statusline=%<
-set statusline+=\ %F
-set statusline+=\ [%n%M%R%H%W]
-set statusline+=%=
-set statusline+=%(\ %y%)
-set statusline+=\ [%{&ff}]
-set statusline+=\ [%{!empty(&fenc)?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]
+set statusline=%<%{\"\"}
+set statusline+=%1*\ %F\ %*
+set statusline+=%2*\ [%n]\ %(%M%R%H%W\ %)%*
+set statusline+=%3*%(\ %y\ %)%*
+set statusline+=%3*%=%*
+set statusline+=%3*\ [%{!empty(&fenc)?&fenc:&enc}%{&bomb?\",BOM\":\"\"}]\ %*
+set statusline+=%3*\ [%{&ff}]\ %*
 if exists('*wordcount')
-  set statusline+=\ \ \ Length:%{wordcount().bytes}\ Lines:%L
+  set statusline+=%2*\ \ Length:%{wordcount().bytes}\ Lines:%L\ \ %*
 else
-  set statusline+=\ \ \ Length:%{line2byte(line('$')+1)-1}\ Lines:%L
+  set statusline+=%2*\ \ Length:%{line2byte(line('$')+1)-1}\ Lines:%L\ \ %*
 endif
-set statusline+=\ \ \ Ln:%l,Col:%c\ Pos:%o
-set statusline+=\ \ \ %P
-set statusline+=\ %{\"\"}
+set statusline+=%1*\ \ Ln:%l,Col:%c\ Pos:%o\ \ %*
+set statusline+=%1*\ %P\ %*
+
+hi User1 ctermfg=White ctermbg=DarkBlue cterm=bold
+hi User2 ctermfg=Black ctermbg=Blue cterm=bold
+hi User3 ctermfg=DarkBlue ctermbg=LightBlue cterm=bold
 
 " 显示光标的当前位置
 set ruler
+
+" 配色方案
+" colorscheme ron
 
 " 插入括号时，短暂地跳转到与之匹配的括号
 set showmatch
@@ -82,9 +88,6 @@ set wildmenu
 if has('clipboard')
   set clipboard=unnamedplus
 endif
-
-" 配色方案
-colorscheme ron
 
 
 
