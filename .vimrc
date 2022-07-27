@@ -20,9 +20,6 @@ set showcmd
 " 支持使用鼠标
 set mouse=a
 
-" 文件类型检查
-filetype plugin indent on
-
 " 缩进
 set smartindent
 set tabstop=4
@@ -89,18 +86,38 @@ if has('clipboard')
   set clipboard=unnamedplus
 endif
 
+" 文件类型检查
+filetype plugin indent on
+
 
 
 """""""
 "" 插件
 """""""
 
+"" Vim Plugin Manager: vim-plug
 call plug#begin('~/.vim/plugged')
-
-" The NERD tree
-Plug 'scrooloose/nerdtree'
 
 " Tagbar
 Plug 'majutsushi/tagbar'
 
+" CCTree
+Plug 'hari-rangarajan/cctree'
+
 call plug#end()
+
+
+
+"""""""""""
+"" 插件配置
+"""""""""""
+
+"" netrw.vim
+" 设置默认的列表样式：树形，按i键可切换
+let g:netrw_liststyle=3
+
+" :help g:netrw_browse_split
+let g:netrw_browse_split=4
+
+" 预览窗口显示在垂直分割窗口中
+let g:netrw_preview=1
