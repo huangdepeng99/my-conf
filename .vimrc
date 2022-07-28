@@ -9,7 +9,7 @@ set number
 set nocompatible
 
 " 语法高亮
-syntax on
+syntax enable
 
 " 显示当前模式
 set showmode
@@ -31,7 +31,7 @@ set noexpandtab
 set wrap
 
 " 垂直滚动时，光标距离顶部/底部的位置（单位：行）
-set scrolloff=5
+set scrolloff=3
 
 " 编码
 set encoding=utf-8
@@ -65,6 +65,9 @@ set ruler
 " 配色方案
 " colorscheme ron
 
+" 使用256色
+set t_Co=256
+
 " 插入括号时，短暂地跳转到与之匹配的括号
 set showmatch
 set matchtime=2	" 跳转时间
@@ -87,7 +90,25 @@ if has('clipboard')
 endif
 
 " 文件类型检查
-filetype plugin indent on
+filetype indent plugin on
+
+" 备份文件
+set backup
+set backupdir=~/.vim/.backup//	" 路径必须存在
+
+" 交换文件
+set swapfile
+set directory=~/.vim/.swap//	" 路径必须存在
+
+" 撤销文件
+set undofile
+set undodir=~/.vim/.undo//	" 路径必须存在
+
+" 自动切换工作目录
+set autochdir
+
+" 历史记录
+set history=200
 
 
 
