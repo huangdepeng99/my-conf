@@ -110,6 +110,9 @@ set autochdir
 " 历史记录
 set history=200
 
+" 是否显示标签栏（0表示不显示，1表示只在多标签时显示，2表示总是显示）
+set showtabline=2
+
 
 
 """""""
