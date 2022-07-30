@@ -1,2 +1,2 @@
-# my-vim-conf
-My Vim Configuration
+# my-conf
+My configuration files.
