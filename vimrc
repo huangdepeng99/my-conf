@@ -9,7 +9,7 @@ set number
 set nocompatible
 
 " 语法高亮
-syntax enable
+syntax on
 
 " 显示当前模式
 set showmode
