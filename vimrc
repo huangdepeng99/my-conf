@@ -118,6 +118,14 @@ hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
 hi TabLine ctermfg=White ctermbg=DarkGrey cterm=NONE
 hi TabLineFill ctermfg=Grey
 
+" 折叠
+set foldenable			" zn/zN 可快速地禁止/启用该选项 (等价于执行:set nofoldenable/:set foldenable)，
+						" zi 可在两者之间快速切换
+set foldmethod=syntax	" 依语法折叠
+set foldcolumn=2		" 折叠栏
+hi FoldColumn ctermfg=Black ctermbg=LightGrey cterm=bold
+hi Folded ctermfg=LightBlue ctermbg=DarkGrey
+
 
 
 """""""
