@@ -9,7 +9,7 @@ set number
 set nocompatible
 
 " 语法高亮
-syntax on
+syntax enable
 
 " 显示当前模式
 set showmode
@@ -81,8 +81,8 @@ set incsearch
 " 搜索时忽略大小写，但当搜索模式中存在大写字母时，则大小写敏感
 set ignorecase smartcase
 
-" Tab补全时显示匹配菜单
-set wildmenu
+" 命令行补全
+set wildmenu	" 增强模式
 
 " 剪切板
 if has('clipboard')
