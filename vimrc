@@ -10,8 +10,8 @@ set relativenumber
 
 " 高亮显示当前行
 set cursorline
-hi CursorLine cterm=NONE
-hi CursorLineNr ctermfg=Red cterm=bold
+highlight CursorLine cterm=NONE
+highlight CursorLineNr ctermfg=Red cterm=bold
 
 " 不与Vi兼容
 set nocompatible
@@ -63,9 +63,9 @@ endif
 set statusline+=%1*\ \ Ln:%l,Col:%c\ Pos:%o\ \ %*
 set statusline+=%1*\ %P\ %*
 
-hi User1 ctermfg=White ctermbg=DarkBlue cterm=bold
-hi User2 ctermfg=Black ctermbg=Blue cterm=bold
-hi User3 ctermfg=DarkBlue ctermbg=LightBlue cterm=bold
+highlight User1 ctermfg=White ctermbg=DarkBlue cterm=bold
+highlight User2 ctermfg=Black ctermbg=Blue cterm=bold
+highlight User3 ctermfg=DarkBlue ctermbg=LightBlue cterm=bold
 
 " 显示光标的当前位置
 set ruler
@@ -122,17 +122,17 @@ set history=200
 set showtabline=2
 
 " 标签栏高亮
-hi TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
-hi TabLine ctermfg=White ctermbg=DarkGrey cterm=NONE
-hi TabLineFill ctermfg=Grey
+highlight TabLineSel ctermfg=White ctermbg=DarkCyan cterm=bold
+highlight TabLine ctermfg=White ctermbg=DarkGrey cterm=NONE
+highlight TabLineFill ctermfg=Grey
 
 " 折叠
 set foldenable			" zn/zN 可快速地禁用/启用该选项 (等价于执行:set nofoldenable/:set foldenable)，
 						" zi 可在两者之间快速切换
 set foldmethod=syntax	" 依语法折叠
 set foldcolumn=2		" 折叠栏
-hi FoldColumn ctermfg=Black ctermbg=Grey cterm=bold
-hi Folded ctermfg=LightBlue ctermbg=DarkGrey
+highlight FoldColumn ctermfg=Black ctermbg=Grey cterm=bold
+highlight Folded ctermfg=LightBlue ctermbg=DarkGrey
 
 
 
