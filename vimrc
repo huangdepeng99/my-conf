@@ -5,6 +5,14 @@
 " 显示行号
 set number
 
+" 相对行号
+set relativenumber
+
+" 高亮显示当前行
+set cursorline
+hi CursorLine cterm=NONE
+hi CursorLineNr ctermfg=Red cterm=bold
+
 " 不与Vi兼容
 set nocompatible
 
@@ -123,7 +131,7 @@ set foldenable			" zn/zN 可快速地禁用/启用该选项 (等价于执行:set
 						" zi 可在两者之间快速切换
 set foldmethod=syntax	" 依语法折叠
 set foldcolumn=2		" 折叠栏
-hi FoldColumn ctermfg=Black ctermbg=LightGrey cterm=bold
+hi FoldColumn ctermfg=Black ctermbg=Grey cterm=bold
 hi Folded ctermfg=LightBlue ctermbg=DarkGrey
 
 
