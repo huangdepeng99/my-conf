@@ -73,6 +73,9 @@ set ruler
 " 配色方案
 " colorscheme ron
 
+" 设置背景色
+set background=dark
+
 " 使用256色
 set t_Co=256
 
@@ -80,8 +83,9 @@ set t_Co=256
 set showmatch
 set matchtime=2	" 跳转时间
 
-" 搜索时，高亮显示匹配结果
-set hlsearch
+" 搜索时，高亮显示所有匹配结果
+set hlsearch	" 使用命令:nohlsearch 暂时取消高亮显示
+				" 注意：该命令并不等同于:set nohlsearch
 
 " 增量式搜索
 set incsearch
