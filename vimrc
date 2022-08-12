@@ -93,6 +93,9 @@ set incsearch
 " 搜索时忽略大小写，但当搜索模式中存在大写字母时，则大小写敏感
 set ignorecase smartcase
 
+" 搜索时显示搜索计数，如“[1/5]”
+set shortmess-=S	" 注：需要 vim >= 8.1.1270
+
 " 命令行补全
 set wildmenu	" 增强模式
 
