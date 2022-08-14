@@ -141,6 +141,9 @@ set foldcolumn=2		" 折叠栏
 highlight FoldColumn ctermfg=Black ctermbg=Grey cterm=bold
 highlight Folded ctermfg=LightBlue ctermbg=DarkGrey
 
+" 标签
+set tags=./.tags;,.tags
+
 
 
 """""""
@@ -151,16 +154,19 @@ highlight Folded ctermfg=LightBlue ctermbg=DarkGrey
 call plug#begin('~/.vim/plugged')
 
 " Tagbar
-Plug 'majutsushi/tagbar'
-
-" CCTree
-Plug 'hari-rangarajan/cctree'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 " rainbow
 Plug 'luochen1990/rainbow'
 
 " surround.vim
 Plug 'tpope/vim-surround'
+
+" vim-gutentags
+Plug 'ludovicchabant/vim-gutentags'
+
+" vim-cpp-enhanced-highlight
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
 
@@ -181,3 +187,40 @@ let g:rainbow_conf={
 \	'ctermfgs': ['Blue', 'Yellow', 'Cyan', 'Magenta'],
 \	'operators': '_,_'
 \}
+
+"" vim-gutentags
+" 从被编辑文件所在目录开始，向上递归的搜索下面列出的文件/目录(工程目录的标志)，
+" 如果找到了，就生成相应的标签文件，否则就不生成
+let g:gutentags_project_root=['.root', '.git', '.svn', '.hg', '.project']
+
+" 生成的标签文件的名称
+let g:gutentags_ctags_tagfile='.tags'
+
+" 将自动生成的标签文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags=expand('~/.cache/tags')
+let g:gutentags_cache_dir=s:vim_tags
+
+" 检测 ~/.cache/tags 是否存在，如果不存在就新建
+if !isdirectory(s:vim_tags)
+  silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args=['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args+=['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args+=['--c-kinds=+px']
+
+"" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight=1		" Highlighting of class scope
+let g:cpp_member_variable_highlight=1	" Highlighting of member variables
+let g:cpp_class_decl_highlight=1		" Highlighting of class names in declarations
+let g:cpp_posix_standard=1				" Highlighting of POSIX functions
+let g:cpp_concepts_highlight=1			" Highlighting of library concepts
+
+" Highlighting of template functions
+let g:cpp_experimental_simple_template_highlight=1
+" or
+" let g:cpp_experimental_template_highlight=1
+
+" Highlighting of user defined functions
+" let g:cpp_no_function_highlight=1
