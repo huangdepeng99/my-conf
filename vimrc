@@ -90,8 +90,9 @@ set hlsearch	" 使用命令:nohlsearch 暂时取消高亮显示
 " 增量式搜索
 set incsearch
 
-" 搜索时忽略大小写，但当搜索模式中存在大写字母时，则大小写敏感
-set ignorecase smartcase
+" 当搜索模式中含有大写字母时，大小写敏感，否则，将忽略大小写
+set ignorecase smartcase	" 如果搜索模式中仅含小写字母，但又希望大小写敏感，
+							" 则可以在模式中使用 \C ( :help /ignorecase )
 
 " 搜索时显示搜索计数，如“[1/5]”
 set shortmess-=S	" 注：需要 vim >= 8.1.1270
@@ -142,7 +143,9 @@ highlight FoldColumn ctermfg=Black ctermbg=Grey cterm=bold
 highlight Folded ctermfg=LightBlue ctermbg=DarkGrey
 
 " 标签
-set tags=./.tags;,.tags
+set tags=./.tags;,.tags		" 标签命令所用的文件名
+set tagcase=followscs		" 标签文件搜索时依照 'smartcase' 和 'ignorecase'
+							" 选项的设置来处理大小写
 
 
 
