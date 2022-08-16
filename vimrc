@@ -147,6 +147,9 @@ set tags=./.tags;,.tags		" 标签命令所用的文件名
 set tagcase=followscs		" 标签文件搜索时依照 'smartcase' 和 'ignorecase'
 							" 选项的设置来处理大小写
 
+" 自动命令
+autocmd FileType vim setlocal softtabstop=2 shiftwidth=2 expandtab
+
 
 
 """""""
