@@ -150,6 +150,9 @@ set tagcase=followscs		" 标签文件搜索时依照 'smartcase' 和 'ignorecase
 " 自动命令
 autocmd FileType vim setlocal softtabstop=2 shiftwidth=2 expandtab
 
+" 字典补全
+set dictionary=/usr/share/dict/words
+
 
 
 """""""
