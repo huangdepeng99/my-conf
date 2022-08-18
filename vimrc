@@ -153,6 +153,9 @@ autocmd FileType vim setlocal softtabstop=2 shiftwidth=2 expandtab
 " 字典补全
 set dictionary=/usr/share/dict/words
 
+" 词典补全
+set thesaurus=~/.vim/thesaurus/english.txt  " :help thesaurus
+
 
 
 """""""
