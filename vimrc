@@ -110,15 +110,33 @@ filetype indent plugin on
 
 " 备份文件
 set backup
-set backupdir=~/.vim/.backup//	" 路径必须存在
+set backupdir=~/.vim/.backup//
+
+" 检测目录 ~/.vim/.backup/ 是否存在，如果不存在就新建
+let s:backup_dir=expand('~/.vim/.backup/')
+if !isdirectory(s:backup_dir)
+  silent! call mkdir(s:backup_dir, 'p')
+endif
 
 " 交换文件
 set swapfile
-set directory=~/.vim/.swap//	" 路径必须存在
+set directory=~/.vim/.swap//
+
+" 检测目录 ~/.vim/.swap/ 是否存在，如果不存在就新建
+let s:swap_dir=expand('~/.vim/.swap/')
+if !isdirectory(s:swap_dir)
+  silent! call mkdir(s:swap_dir, 'p')
+endif
 
 " 撤销文件
 set undofile
-set undodir=~/.vim/.undo//	" 路径必须存在
+set undodir=~/.vim/.undo//
+
+" 检测目录 ~/.vim/.undo/ 是否存在，如果不存在就新建
+let s:undo_dir=expand('~/.vim/.undo/')
+if !isdirectory(s:undo_dir)
+  silent! call mkdir(s:undo_dir, 'p')
+endif
 
 " 自动切换工作目录
 set autochdir
@@ -208,11 +226,11 @@ let g:gutentags_project_root=['.root', '.git', '.svn', '.hg', '.project']
 " 生成的标签文件的名称
 let g:gutentags_ctags_tagfile='.tags'
 
-" 将自动生成的标签文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags=expand('~/.cache/tags')
+" 将自动生成的标签文件全部放入 ~/.cache/tags/ 目录中，避免污染工程目录
+let s:vim_tags=expand('~/.cache/tags/')
 let g:gutentags_cache_dir=s:vim_tags
 
-" 检测 ~/.cache/tags 是否存在，如果不存在就新建
+" 检测目录 ~/.cache/tags/ 是否存在，如果不存在就新建
 if !isdirectory(s:vim_tags)
   silent! call mkdir(s:vim_tags, 'p')
 endif
