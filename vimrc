@@ -174,6 +174,10 @@ set dictionary=/usr/share/dict/words
 " 词典补全
 set thesaurus=~/.vim/thesaurus/english.txt  " :help thesaurus
 
+" 键盘映射
+map <F10> <Esc>:tabnew<CR>
+map <S-u> <Esc>:nohlsearch<CR>
+
 
 
 """""""
