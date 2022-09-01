@@ -175,8 +175,11 @@ set dictionary=/usr/share/dict/words
 set thesaurus=~/.vim/thesaurus/english.txt  " :help thesaurus
 
 " 键盘映射
-map <F10> <Esc>:tabnew<CR>
-map <S-u> <Esc>:nohlsearch<CR>
+map <silent> <F10> <Esc>:tabnew<CR>
+map <silent> <S-U> <Esc>:nohlsearch<CR>
+
+" 切换粘贴模式
+set pastetoggle=<F12>
 
 
 
