@@ -95,7 +95,10 @@ set ignorecase smartcase	" 如果搜索模式中仅含小写字母，但又希�
 							" 则可以在模式中使用 \C ( :help /ignorecase )
 
 " 搜索时显示搜索计数，如“[1/5]”
-set shortmess-=S	" 注：需要 vim >= 8.1.1270
+" https://github.com/vim/vim/commit/9dfa3139198b38b28673e251a3756430065914e9
+if v:version == 801 && has("patch1270") || v:version > 801  " :help has-patch
+  set shortmess-=S
+endif
 
 " 命令行补全
 set wildmenu	" 增强模式
