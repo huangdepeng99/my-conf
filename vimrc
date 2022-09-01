@@ -162,14 +162,15 @@ highlight Folded ctermfg=LightBlue ctermbg=DarkGrey
 
 " 标签
 set tags=./.tags;,.tags		" 标签命令所用的文件名
-set tagcase=followscs		" 标签文件搜索时依照 'smartcase' 和 'ignorecase'
-							" 选项的设置来处理大小写
+if exists('+tagcase')
+  set tagcase=followscs		" 标签文件搜索时依照 'smartcase' 和 'ignorecase'
+endif						" 选项的设置来处理大小写
 
 " 自动命令
 autocmd FileType vim setlocal softtabstop=2 shiftwidth=2 expandtab
 
 " 字典补全
-set dictionary=/usr/share/dict/words
+set dictionary=/usr/share/dict/words  " https://en.wikipedia.org/wiki/Words_(Unix)
 
 " 词典补全
 set thesaurus=~/.vim/thesaurus/english.txt  " :help thesaurus
