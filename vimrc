@@ -185,6 +185,9 @@ map <silent> <S-U> <Esc>:nohlsearch<CR>
 " 切换粘贴模式
 set pastetoggle=<F12>
 
+" 当使用 :vsplit 或 :vnew 等命令垂直分割窗口时，将新窗口放置在右边（默认在左边）
+set splitright
+
 
 
 """""""
