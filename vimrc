@@ -121,6 +121,20 @@ if !isdirectory(s:backup_dir)
   silent! call mkdir(s:backup_dir, 'p')
 endif
 
+" 用来清理备份文件的自定义函数和自定义命令
+function! s:clean_backup_files()
+  if exists('*readdir')
+    let backup_files = readdir(s:backup_dir)
+  else
+    let backup_files = systemlist('/usr/bin/ls -A ' . s:backup_dir)
+  endif
+  for fname in backup_files
+    call delete(s:backup_dir . fname)
+  endfor
+endfunction
+
+command! -nargs=0 -bar CleanBackupFiles call s:clean_backup_files()
+
 " 交换文件
 set swapfile
 set directory=~/.vim/.swap//
@@ -131,6 +145,20 @@ if !isdirectory(s:swap_dir)
   silent! call mkdir(s:swap_dir, 'p')
 endif
 
+" 用来清理交换文件的自定义函数和自定义命令
+function! s:clean_swap_files()
+  if exists('*readdir')
+    let swap_files = readdir(s:swap_dir)
+  else
+    let swap_files = systemlist('/usr/bin/ls -A ' . s:swap_dir)
+  endif
+  for fname in swap_files
+    call delete(s:swap_dir . fname)
+  endfor
+endfunction
+
+command! -nargs=0 -bar CleanSwapFiles call s:clean_swap_files()
+
 " 撤销文件
 set undofile
 set undodir=~/.vim/.undo//
@@ -140,6 +168,20 @@ let s:undo_dir=expand('~/.vim/.undo/')
 if !isdirectory(s:undo_dir)
   silent! call mkdir(s:undo_dir, 'p')
 endif
+
+" 用来清理撤销文件的自定义函数和自定义命令
+function! s:clean_undo_files()
+  if exists('*readdir')
+    let undo_files = readdir(s:undo_dir)
+  else
+    let undo_files = systemlist('/usr/bin/ls -A ' . s:undo_dir)
+  endif
+  for fname in undo_files
+    call delete(s:undo_dir . fname)
+  endfor
+endfunction
+
+command! -nargs=0 -bar CleanUndoFiles call s:clean_undo_files()
 
 " 自动切换工作目录
 set autochdir
@@ -248,6 +290,20 @@ let g:gutentags_cache_dir=s:vim_tags
 if !isdirectory(s:vim_tags)
   silent! call mkdir(s:vim_tags, 'p')
 endif
+
+" 用来清理标签文件的自定义函数和自定义命令
+function! s:clean_tag_files()
+  if exists('*readdir')
+    let tag_files = readdir(s:vim_tags)
+  else
+    let tag_files = systemlist('/usr/bin/ls -A ' . s:vim_tags)
+  endif
+  for fname in tag_files
+    call delete(s:vim_tags . fname)
+  endfor
+endfunction
+
+command! -nargs=0 -bar CleanTagFiles call s:clean_tag_files()
 
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args=['--fields=+niazS', '--extra=+q']
