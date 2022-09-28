@@ -138,6 +138,8 @@ command! -nargs=0 -bar CleanBackupFiles call s:clean_backup_files()
 " 交换文件
 set swapfile
 set directory=~/.vim/.swap//
+set updatecount=100
+set updatetime=2000
 
 " 检测目录 ~/.vim/.swap/ 是否存在，如果不存在就新建
 let s:swap_dir=expand('~/.vim/.swap/')
