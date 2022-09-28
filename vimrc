@@ -1,6 +1,6 @@
-"""""""""""
-"" 基本配置
-"""""""""""
+""""""""""""""""""""
+"" 基本配置(第1部分)
+""""""""""""""""""""
 
 " 显示行号
 set number
@@ -324,3 +324,16 @@ let g:cpp_experimental_simple_template_highlight=1
 
 " Highlighting of user defined functions
 " let g:cpp_no_function_highlight=1
+
+
+
+""""""""""""""""""""
+"" 基本配置(第2部分)
+""""""""""""""""""""
+
+" 缩写
+if exists(':CleanTagFiles') == 2
+  command! -nargs=0 -bar CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles | CleanTagFiles
+else
+  command! -nargs=0 -bar CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles
+endif
