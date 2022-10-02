@@ -121,7 +121,8 @@ if !isdirectory(s:backup_dir)
   silent! call mkdir(s:backup_dir, 'p')
 endif
 
-" 用来清理备份文件的自定义函数和自定义命令
+" 用来清理备份文件的用户自定义函数 s:clean_backup_files 和用户
+" 自定义命令 CleanBackupFiles
 function! s:clean_backup_files()
   if exists('*readdir')
     let backup_files = readdir(s:backup_dir)
@@ -147,7 +148,8 @@ if !isdirectory(s:swap_dir)
   silent! call mkdir(s:swap_dir, 'p')
 endif
 
-" 用来清理交换文件的自定义函数和自定义命令
+" 用来清理交换文件的用户自定义函数 s:clean_swap_files 和用户
+" 自定义命令 CleanSwapFiles
 function! s:clean_swap_files()
   if exists('*readdir')
     let swap_files = readdir(s:swap_dir)
@@ -171,7 +173,8 @@ if !isdirectory(s:undo_dir)
   silent! call mkdir(s:undo_dir, 'p')
 endif
 
-" 用来清理撤销文件的自定义函数和自定义命令
+" 用来清理撤销文件的用户自定义函数 s:clean_undo_files 和用户
+" 自定义命令 CleanUndoFiles
 function! s:clean_undo_files()
   if exists('*readdir')
     let undo_files = readdir(s:undo_dir)
@@ -231,6 +234,56 @@ set pastetoggle=<F12>
 
 " 当使用 :vsplit 或 :vnew 等命令垂直分割窗口时，将新窗口放置在右边（默认在左边）
 set splitright
+
+" 检测目录 ~/.cache/orig/ 是否存在，如果不存在就新建
+let s:orig_dir=expand('~/.cache/orig/')
+if !isdirectory(s:orig_dir)
+  silent! call mkdir(s:orig_dir, 'p')
+endif
+
+" 用来创建原始文件的用户自定义函数 s:create_orig
+function! s:create_orig()
+  let src = expand('<afile>:p')
+  let dst = s:orig_dir . substitute(src, '/', '%', 'g') . '.orig'
+  call writefile(readfile(src), dst)
+endfunction
+
+autocmd BufReadPre * call s:create_orig()
+
+" 用来删除原始文件的用户自定义函数 s:delete_orig
+function! s:delete_orig()
+  if exists('*readdir')
+    let orig_files = readdir(s:orig_dir)
+  else
+    let orig_files = systemlist('/usr/bin/ls -A ' . s:orig_dir)
+  endif
+  for fname in orig_files
+    call delete(s:orig_dir . fname)
+  endfor
+endfunction
+
+autocmd VimLeavePre * call s:delete_orig()
+
+" 用来查看当前缓冲区和原始文件之间差异的用户自定义函数 s:diff_orig 和
+" 用户自定义命令 DiffOrig
+" help :DiffOrig
+function! s:diff_orig()
+  let name = expand('%:p')
+  let orig_file = s:orig_dir . substitute(name, '/', '%', 'g') . '.orig'
+  if empty(findfile(orig_file, s:orig_dir))
+    echohl ErrorMsg | echo 'No original file!' | echohl None
+    return
+  endif
+  let orig_file = substitute(orig_file, '%', '\\%', 'g')
+  vertical new
+  execute 'view' orig_file
+  let &modifiable = 0
+  diffthis
+  wincmd p
+  diffthis
+endfunction
+
+command! -nargs=0 DiffOrig call s:diff_orig()
 
 
 
@@ -293,7 +346,8 @@ if !isdirectory(s:vim_tags)
   silent! call mkdir(s:vim_tags, 'p')
 endif
 
-" 用来清理标签文件的自定义函数和自定义命令
+" 用来清理标签文件的用户自定义函数 s:clean_tag_files 和用户
+" 自定义命令 CleanTagFiles
 function! s:clean_tag_files()
   if exists('*readdir')
     let tag_files = readdir(s:vim_tags)
@@ -333,9 +387,10 @@ let g:cpp_experimental_simple_template_highlight=1
 "" 基本配置(第2部分)
 """"""""""""""""""""
 
-" 缩写
+" 用户自定义命令 CleanAll
+" 清理备份文件、交换文件、撤销文件和标签文件(如果有的话)
 if exists(':CleanTagFiles') == 2
-  command! -nargs=0 -bar CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles | CleanTagFiles
+  command! -nargs=0 CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles | CleanTagFiles
 else
-  command! -nargs=0 -bar CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles
+  command! -nargs=0 CleanAll CleanBackupFiles | CleanSwapFiles | CleanUndoFiles
 endif
