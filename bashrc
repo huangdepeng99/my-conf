@@ -1,4 +1,7 @@
 # 别名
+alias rm='rm -I'
+alias mv='mv -i'
+alias cp='cp -i'
 alias view='vim -R'
 alias vimdiff='vim -d'
 
