@@ -227,7 +227,7 @@ set thesaurus=~/.vim/thesaurus/english.txt  " :help thesaurus
 
 " 键盘映射
 map <silent> <F10> <Esc>:tabnew<CR>
-map <silent> <S-U> <Esc>:nohlsearch<CR>
+map <silent> <C-U> <Esc>:nohlsearch<CR>
 
 " 切换粘贴模式
 set pastetoggle=<F12>
