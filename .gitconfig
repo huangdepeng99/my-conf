@@ -1,0 +1,10 @@
+[user]
+	name = huangdepeng
+	email = hdp990624@outlook.com
+	signingkey = C:/Users/hdp99/.ssh/id_ed25519_sign_win.pub
+[core]
+	editor = vim
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
