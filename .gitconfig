@@ -8,3 +8,5 @@
 	format = ssh
 [commit]
 	gpgSign = true
+[init]
+	defaultBranch = master
