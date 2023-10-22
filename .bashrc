@@ -56,3 +56,11 @@ WSL='~/WorkSpace/'  # Linux
 source ~/.git-prompt.sh
 export GIT_PS1_SHOWCOLORHINTS=true
 export PS1='[\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;32m\]\w\[\e[0m\]]$(__git_ps1 " (%s)")\$ '
+
+
+##########
+## less ##
+##########
+export LESSCHARSET=utf-8
+
+

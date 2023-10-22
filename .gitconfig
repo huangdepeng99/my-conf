@@ -4,9 +4,19 @@
 	signingkey = C:/Users/hdp99/.ssh/id_ed25519_sign_win.pub
 [core]
 	editor = vim
+	quotePath = false
+	pager = less
+	eol = native
+	autocrlf = true
+	safecrlf = warn
 [gpg]
 	format = ssh
 [commit]
 	gpgSign = true
 [init]
 	defaultBranch = master
+[gui]
+	encoding = utf-8
+[i18n]
+	commitEncoding = utf-8
+	logOutputEncoding = utf-8
