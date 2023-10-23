@@ -44,9 +44,17 @@ alias vimdiff='vim -d'
 ###############
 ## variables ##
 ###############
-WSW='/d/WorkSpace/' # Windows
-WSS='~/WorkSpace/'  # WSL
-WSL='~/WorkSpace/'  # Linux
+shopt -s nocasematch
+
+if [[ $OSTYPE =~ .*msys.* ]]; then  # Windows
+  WS='/d/WorkSpace/'
+  OSNAME='WINDOWS'
+elif [[ $OSTYPE =~ .*linux.* ]]; then  # WSL and Linux
+  WS='~/WorkSpace/'
+  OSNAME='LINUX'
+fi
+
+shopt -u nocasematch
 
 
 ############
@@ -54,8 +62,7 @@ WSL='~/WorkSpace/'  # Linux
 ############
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/.git-prompt.sh
-export GIT_PS1_SHOWCOLORHINTS=true
-export PS1='[\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;32m\]\w\[\e[0m\]]$(__git_ps1 " (%s)")\$ '
+export PS1='[\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;32m\]\w\[\e[0m\]]\[\e[1;36m\]`__git_ps1`\[\e[0m\]\n\[\e[1;35m\]$OSNAME\[\e[0m\] \$ '
 
 
 ##########
