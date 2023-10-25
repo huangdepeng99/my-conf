@@ -25,3 +25,5 @@ Term=xterm-256color
 BellFlash=no
 StatusLine=no
 CtrlShiftShortcuts=no
+CopyTab=yes
+CopyAsRTF=no

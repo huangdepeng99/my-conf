@@ -47,10 +47,10 @@ alias vimdiff='vim -d'
 shopt -s nocasematch
 
 if [[ $OSTYPE =~ .*msys.* ]]; then  # Windows
-  WS='/d/WorkSpace/'
+  WorkSpace='/d/WorkSpace/'
   OSNAME='WINDOWS'
 elif [[ $OSTYPE =~ .*linux.* ]]; then  # WSL and Linux
-  WS='~/WorkSpace/'
+  WorkSpace='~/WorkSpace/'
   OSNAME='LINUX'
 fi
 
