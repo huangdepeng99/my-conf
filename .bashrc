@@ -15,11 +15,13 @@ agent_load_env
 # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
 agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
+identities=$(find ~/.ssh/ -name "id_*" -a ! -name "*.pub" -printf '"%p"\n')
+
 if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
     agent_start
-    ssh-add
+    eval ssh-add $identities
 elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-    ssh-add
+    eval ssh-add $identities
 fi
 
 unset env
@@ -47,10 +49,10 @@ alias vimdiff='vim -d'
 shopt -s nocasematch
 
 if [[ $OSTYPE =~ .*msys.* ]]; then  # Windows
-  WorkSpace='/d/WorkSpace/'
+  WorkSpace=/d/WorkSpace/
   OSNAME='WINDOWS'
 elif [[ $OSTYPE =~ .*linux.* ]]; then  # WSL and Linux
-  WorkSpace='~/WorkSpace/'
+  WorkSpace=~/WorkSpace/
   OSNAME='LINUX'
 fi
 
@@ -69,5 +71,11 @@ export PS1='[\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;32m\]\w\[\e[0m\]]\[\e[1;36m\]`__g
 ## less ##
 ##########
 export LESSCHARSET=utf-8
+
+
+############
+## locale ##
+############
+export LANG=zh_CN.UTF-8
 
 
